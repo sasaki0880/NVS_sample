@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Noise Vocoded Speech Sample</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .diagonal-header {
+            position: relative;
+            height: 60px;
+            width: 100px;
+        }
+                .diagonal-header:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top right, transparent 50%, #ddd 50%);
+            z-index: 1;
+        }
+        .condition {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            z-index: 2;
+            font-weight: bold;
+        }
+        .emotion {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            z-index: 2;
+            font-weight: bold;
+        }
+        .audio-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Experimental Speech Data</h1>
+    <p>(Saki FUSANO @Japan Advanced Institute of Science and Technology, Japan, 2024. 11.19)</p>
+
+    <h2>Overview of Speech</h2>
+    <p>This page contains three main sections:</p>
+    <ul>
+        <li><strong>Original Speech:</strong> contains the raw speech samples.</li>
+        <li><strong>Noise Vocoded Speech(NVS) (without MFB, 0-64 Hz):</strong> contains the noise-vocoded speech of original speech, synthesized without using Modulation Filterbank.</li>
+	<li><strong>NVS (with MFB, 0-64 Hz):</strong> contains the noise-vocoded speech of original speech, synthesized using Modulation Filterbank.</li>
+	<li><strong>NVS (with MFB, 4-16 Hz):</strong> contains the noise-vocoded speech of original speech, with the modulation frequency components in the 4-16 Hz band.</li>
+        <li><strong>NVS (with MFB, 4-16 Hz, Time-reversed):</strong> contains the noise-vocoded speech of original speech, with time-reversed temporal amplitude envelope.</li>
+	<li><strong>NVS (with MFB, 4-16 Hz, Time-stretched):</strong> contains the noise-vocoded speech of original speech, with time-stretched temporal amplitude envelope.</li>
+	<li><strong>NVS (with MFB, 4-16 Hz, Time-compressed):</strong> contains the noise-vocoded speech of original speech, with time-compressed temporal amplitude envelope.</li>
+	<li><strong>NVS (with MFB, 4-16 Hz, Time-stretched and compressed):</strong> contains the noise-vocoded speech of original speech, with time-stretched and compressed temporal amplitude envelope.</li>
+    </ul>
+
+    <h2>Audio Samples Table</h2>
+    <table>
+        <tr>
+            <th class="diagonal-header">
+                <span class="condition">Condition</span>
+                <span class="stimulus">Stimulus</span>
+            </th>
+            <th>A(a)</th>
+            <th>B(b)</th>
+            <th>C(c)</th>
+            <th>D(d)</th>
+        </tr>
+        <tr>
+            <td><strong>Original</strong></td>
+            <td>
+                <audio controls>
+                    <source src="original_speech/ABE1.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="original_speech/ABE3_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="original_speech/ABE4_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="original_speech/ABE5_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>NVS (without MFB, 0-64 Hz)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_notMFB/ABE1_NVS_notMFB_ad_4.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_notMFB/ABE3_NVS_notMFB_ad_4.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_notMFB/ABE4_NVS_notMFB_ad_4.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_notMFB/ABE5_NVS_notMFB_ad_3.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>NVS (with MFB, 0-64 Hz)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(0-64)/0-64_No processed_ABE1_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(0-64)/0-64_No processed_ABE3_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(0-64)/0-64_No processed_ABE4_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(0-64)/0-64_No processed_ABE5_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+	<tr>
+            <td><strong>NVS (with MFB, 4-16 Hz)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(4-16)/4-16_No processed_ABE1_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(4-16)/4-16_No processed_ABE3_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(4-16)/4-16_No processed_ABE4_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB(4-16)/4-16_No processed_ABE5_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+	<tr>
+            <td><strong>NVS (with MFB, 4-16 Hz, Time-reversed)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_R(4-16)/4-16_R_No processed_ABE1_RO_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_R(4-16)/4-16_R_No processed_ABE3_RO_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_R(4-16)/4-16_R_No processed_ABE4_RO_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_R(4-16)/4-16_R_No processed_ABE5_RO_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+	<tr>
+            <td><strong>NVS (with MFB, 4-16 Hz, Time-stretched)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch/Stretch_ABE1_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch/Stretch_ABE3_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch/Stretch_ABE4_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch/Stretch_ABE5_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+	<tr>
+            <td><strong>NVS (with MFB, 4-16 Hz, Time-compressed)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Compress/Compress_ABE1_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Compress/Compress_ABE3_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Compress/Compress_ABE4_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Compress/Compress_ABE5_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+	<tr>
+            <td><strong>NVS (with MFB, 4-16 Hz, Time-stretched and compressed)</strong></td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch & Compress/Stretch & Compress_ABE1_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch & Compress/Stretch & Compress_ABE3_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch & Compress/Stretch & Compress_ABE4_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="NVS_MFB_P(4-16)/Stretch & Compress/Stretch & Compress_ABE5_ad_ad.wav" type="audio/wav">
+                </audio>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
